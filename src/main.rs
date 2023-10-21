@@ -20,5 +20,4 @@ fn main() {
         Ordering::Less => println!("too small "),
     }
     }
-
 }
