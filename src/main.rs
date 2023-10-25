@@ -12,8 +12,12 @@ fn main() {
             .expect("failed to read line");
         let guess: u32 = match guess.trim().parse() {
             Ok(number) => {
-                println!("{}", number);
-                number
+                if (0..=100).contains(&number) {
+                    number
+                } else {
+                    println!("please enter a number in range 0 to 100");
+                    continue;
+                }
             }
             Err(err) => {
                 println!("invalid Input :-  {}, {}", err, guess);
@@ -21,7 +25,7 @@ fn main() {
             }
         };
         println!("you guessed number {}", guess);
-        println!("random number is {}", random_number);
+        // println!("random number is {}", random_number);
         match guess.cmp(&random_number) {
             Ordering::Equal => {
                 println!("you win");
